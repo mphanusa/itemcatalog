@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+	<div class="row">
+		<div class="col-sm-2">
+
+				<h5><Strong>Categories</strong></h5>
+				<ul>
+					{% for category in categories %}
+						<a href="{{url_for('showCategory', catalog_id = category.id )}}">
+							<li>
+								{{category.name}}
+							</li>
+						</a>
+					{% endfor %}
+				</ul>
+
+		</div>
+
+		<div class="col-sm-10">
+				<h6><Strong>{{categoryName}} Title ({{categoryItemsCount}} Items)</strong></h6>
+				<ul>
+					{% for categoryItem in categoryItems %}
+						<a href="{{url_for('showCategoryItem', catalog_id = categoryItem.category_id ,item_id = categoryItem.id )}}">
+							<li>
+								{{categoryItem.name}}
+							</li>
+						</a>
+					{% endfor %}
+				</ul>
+		</div>
+	</div>
+
+{% endblock %}

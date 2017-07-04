@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Item Catalog</title>
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+	<!-- jQuery library -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+	<!-- Latest compiled JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+<nav class="navbar navbar-nav">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="/"><strong>Item Catalog</strong></a>
+    </div>
+    <ul class="nav navbar-nav">
+      	<li class="active"><a href="/">Home</a></li>
+      	{%if 'username' not in session %}
+			<button class="btn btn-success navbar-btn"><a href="{{url_for('login')}}">Login</a></button>
+		{% else %}
+			<button class="btn btn-info navbar-btn"><a href="{{url_for('logout')}}">Logout</a></button>
+		{% endif %}
+
+    </ul>
+  </div>
+</nav>
+<div class="container-fluid">
+	<div class="row">
+			<div class="col-sm-12">
+				{% with messages = get_flashed_messages() %}
+               		{% if messages %}
+               			<div class = 'alert alert-info'>
+               				<ul>
+                   				{% for message in messages %}
+                   					<li> <strong> {{ message }} </strong> </li>
+                   				{% endfor %}
+               				</ul>
+               			</div>
+               		{% endif %}
+        		{% endwith %}
+        	</div>
+    </div>
+
+    {% block content %}
+	{% endblock %}
+
+
+</div>
+</body>
+</html>

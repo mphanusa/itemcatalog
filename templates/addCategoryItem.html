@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h6><strong>Add New Title</strong></h6>
+<form action="#" method="post">
+	<fieldset>
+		<div class="form-group">
+			<label for="name">Name:</label>
+			<input type="text" name="name" class="form-control">
+		</div>
+		<div class="form-group">
+			<label for="artist">Artist:</label>
+			<textarea name="artist" id="" cols="30" rows="10" class="form-control"></textarea>
+		</div>
+		<div class="form-group">
+			<label for="Category">Category:</label>
+			<select class="form-control" name="category">
+				{% for category in categories %}
+					<option value="{{category.id}}">{{category.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+	</fieldset>
+	<button type="submit" value="Add Title" class="btn btn-success">Add Title</button>
+
+</form>
+
+{% endblock %}
